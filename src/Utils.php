@@ -59,7 +59,7 @@ final class Utils {
 			return FALSE;
 		};
 
-		$_equalsArray = function ($left, $right) use ($_equals): bool {
+		$_equalsArray = function ($left, $right): bool {
 			if (!is_array($left) || !is_array($right)) {
 				return FALSE;
 			}

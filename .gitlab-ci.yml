@@ -7,7 +7,9 @@ build.composer:
   stage: build
   tags: [grifart/php7.1-with-gulp-and-all-php-modules]
 
-  script: composer install --ansi --no-interaction --prefer-dist
+  script:
+    - composer install --ansi --no-interaction --prefer-dist
+
   artifacts:
     expire_in: 2 days
     paths:
@@ -19,7 +21,8 @@ test.tests:
   tags: [grifart/php7.1-with-gulp-and-all-php-modules]
 
   dependencies: [build.composer]
-  script: vendor/bin/tester -c tests/php-unix.ini tests
+  script:
+    - vendor/bin/tester -c tests/php-unix.ini tests
 
 
 test.phpstan:
@@ -27,8 +30,10 @@ test.phpstan:
   tags: [grifart/php7.1-with-gulp-and-all-php-modules]
 
   dependencies: [build.composer]
-  before_script: composer global require phpstan/phpstan-shim
-  script: phpstan analyze --ansi --no-progress --no-interaction --level 7 src tests
+  before_script:
+    - composer global require phpstan/phpstan-shim
+  script:
+    - phpstan.phar analyze --ansi --no-progress --no-interaction --level 7 src tests
 
 
 test.linter:
@@ -36,5 +41,7 @@ test.linter:
   tags: [grifart/php7.1-with-gulp-and-all-php-modules]
 
   dependencies: [build.composer]
-  before_script: composer global require jakub-onderka/php-parallel-lint jakub-onderka/php-console-highlighter
-  script: parallel-lint src tests
+  before_script:
+    - composer global require jakub-onderka/php-parallel-lint jakub-onderka/php-console-highlighter
+  script:
+    - parallel-lint src tests
