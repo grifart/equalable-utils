@@ -1,0 +1,23 @@
+{
+	"name": "grifart/equalable-utils",
+	"type": "library",
+	"description": "Provides a universal equals() function.",
+	"require": {
+		"php": ">= 7.1.0",
+		"grifart/comparable-polyfill": "dev-master",
+		"php-ds/php-ds": "^1.1"
+	},
+	"require-dev": {
+		"nette/tester": "^2.0.0"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@gitlab.grifart.local:grifart-internal/comparable-polyfill.git"
+		}
+	],
+	"autoload": {
+		"classmap": ["src/"],
+		"files": ["src/equals.php"]
+	}
+}
