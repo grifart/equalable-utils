@@ -4,7 +4,7 @@
 	"description": "Provides a universal equals() function.",
 	"require": {
 		"php": ">= 7.1.0",
-		"grifart/comparable-polyfill": "dev-master",
+		"grifart/comparable-polyfill": "^1.0.0",
 		"php-ds/php-ds": "^1.1"
 	},
 	"require-dev": {
