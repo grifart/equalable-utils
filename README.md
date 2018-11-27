@@ -6,6 +6,12 @@ This is why universal [`equals()` method exists in Java](https://docs.oracle.com
 
 This is why I have implemented global `equals()` function provides logic equality of objects. Which objects are equal and which not can be modified by several things - see bellow.
 
+## Installation
+
+```bash
+composer require grifart/equalable-utils
+```
+
 ## Implementing logical equality
 
 There are several ways of implementhing logic equality.
