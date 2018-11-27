@@ -6,7 +6,7 @@ This is why universal [`equals()` method exists in Java](https://docs.oracle.com
 
 This is why I have implemented global `equals()` function provides logic equality of objects. Which objects are equal and which not can be modified by several things - see bellow.
 
-## Implementing logical equality
+## Implementing logical equality
 
 There are several ways of implementhing logic equality.
 
@@ -18,7 +18,7 @@ There are several ways of implementhing logic equality.
 
 This library supports [`\Comparable`](https://github.com/grifart/comparable-polyfill) interface and tries to compare objects.
 
-### Just implement equals($other), is($other) or isEqualTo($other) methods
+### Just implement equals($other), is($other) or isEqualTo($other) methods
 
 This methods must behave the same as [Java `equals()` method](https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object)).
 
