@@ -2,6 +2,7 @@
 	"name": "grifart/equalable-utils",
 	"type": "library",
 	"description": "Provides a universal equals() function.",
+	"license": "MIT",
 	"require": {
 		"php": ">= 7.1.0",
 		"grifart/comparable-polyfill": "^1.0.0",
