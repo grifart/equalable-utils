@@ -27,7 +27,7 @@ final class Utils {
 	public static function equals($one, $other): bool
 	{
 		$_equals = function ($left, $right): bool {
-			if(!is_object($left)) {
+			if(!is_object($left) || !is_object($right)) {
 				return false;
 			}
 
