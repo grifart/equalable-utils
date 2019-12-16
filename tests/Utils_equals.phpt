@@ -19,6 +19,11 @@ Assert::true(equals('', ''));
 Assert::true(equals('hi', 'hi'));
 Assert::false(equals('hi', 'hello'));
 
+// nulls
+Assert::true(equals(null, null));
+Assert::false(equals(new stdClass(), null));
+Assert::false(equals(null, new stdClass()));
+
 // Datetime
 Assert::true(equals(new DateTime('2017-03-24 11:11:11'), new DateTime('2017-03-24 11:11:11')));
 Assert::false(equals(new DateTime('2017-03-24 11:11:11'), new DateTimeImmutable('2017-03-24 11:11:11')));
