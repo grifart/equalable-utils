@@ -10,12 +10,8 @@ namespace Interop\EqualableUtils;
  * the last option.
  *
  * There are some exceptions for PHP built-in value objects (DateTime, ...)
- *
- * @param mixed $one
- * @param mixed $other
- * @return bool
  */
-function equals($one, $other): bool
+function equals(mixed $one, mixed $other): bool
 {
 	return Utils::equals($one, $other);
 }

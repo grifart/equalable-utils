@@ -1,45 +1,53 @@
 stages:
-  - build
+  - install
   - test
 
-
-build.composer:
-  stage: build
-  tags: [grifart/php7.1-with-gulp-and-all-php-modules]
-
+.install:
+  stage: install
+  interruptible: true
   script:
     - composer install --ansi --no-interaction --prefer-dist
-
   artifacts:
     expire_in: 2 days
     paths:
-      - vendor
+      - vendor/
 
+install.php82:
+  extends: .install
+  image: grifart/php8.2-with-all-modules-and-various-tools
 
-test.tests:
+install.php83:
+  extends: .install
+  image: grifart/php8.3-with-all-modules-and-various-tools
+
+install.php84:
+  extends: .install
+  image: grifart/php8.4-with-all-modules-and-various-tools
+
+.test:
   stage: test
-  tags: [grifart/php7.1-with-gulp-and-all-php-modules]
-
-  dependencies: [build.composer]
+  interruptible: true
   script:
     - vendor/bin/tester -c tests/php-unix.ini tests
 
+test.php82:
+  extends: .test
+  image: grifart/php8.2-with-all-modules-and-various-tools
+  dependencies: [ install.php82 ]
 
-test.phpstan:
+test.php83:
+  extends: .test
+  image: grifart/php8.3-with-all-modules-and-various-tools
+  dependencies: [ install.php83 ]
+
+test.php84:
+  extends: .test
+  image: grifart/php8.4-with-all-modules-and-various-tools
+  dependencies: [ install.php84 ]
+
+phpstan:
   stage: test
-  tags: [grifart/php7.1-with-gulp-and-all-php-modules]
-
-  dependencies: [build.composer]
+  image: grifart/php8.4-with-all-modules-and-various-tools
+  dependencies: [ install.php84 ]
   script:
-    - vendor/bin/phpstan analyze --ansi --no-progress --no-interaction --level 8 src tests
-
-
-test.linter:
-  stage: test
-  tags: [grifart/php7.1-with-gulp-and-all-php-modules]
-
-  dependencies: [build.composer]
-  before_script:
-    - composer global require jakub-onderka/php-parallel-lint jakub-onderka/php-console-highlighter
-  script:
-    - parallel-lint src tests
+    - vendor/bin/phpstan analyze --ansi --no-progress --no-interaction --level max src tests

@@ -4,13 +4,14 @@
 	"description": "Provides a universal equals() function.",
 	"license": "MIT",
 	"require": {
-		"php": ">= 7.1.0",
-		"grifart/comparable-polyfill": "^1.0.0",
-		"php-ds/php-ds": "^1.1"
+		"php": "^8.2",
+		"ext-ds": "^1.0",
+		"grifart/comparable-polyfill": "^1.0"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0.0",
-		"phpstan/phpstan": "^0.12.0"
+		"php-ds/php-ds": "^1.0",
+		"phpstan/phpstan": "^2.0"
 	},
 	"repositories": [
 		{
