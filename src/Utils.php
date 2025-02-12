@@ -19,12 +19,8 @@ final class Utils {
 	 * the last option.
 	 *
 	 * There are some exceptions for PHP built-in value objects (DateTime, ...)
-	 *
-	 * @param mixed $one
-	 * @param mixed $other
-	 * @return bool
 	 */
-	public static function equals($one, $other): bool
+	public static function equals(mixed $one, mixed $other): bool
 	{
 		$_equals = function ($left, $right): bool {
 			if(!is_object($left) || !is_object($right)) {
@@ -48,11 +44,9 @@ final class Utils {
 				return $left == $right; // @see http://php.net/manual/en/datetime.diff.php
 			}
 
-			if (is_object($left)) {
-				foreach (['equals', 'is', 'isEqualTo'] as $methodName) {
-					if (method_exists($left, $methodName)) {
-						return $left->$methodName($right);
-					}
+			foreach (['equals', 'is', 'isEqualTo'] as $methodName) {
+				if (method_exists($left, $methodName)) {
+					return $left->$methodName($right); // @phpstan-ignore return.type
 				}
 			}
 
